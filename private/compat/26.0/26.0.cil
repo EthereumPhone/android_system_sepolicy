@@ -5,6 +5,7 @@
 (typeattribute hal_wifi_offload)
 (typeattribute hal_wifi_offload_client)
 (typeattribute hal_wifi_offload_server)
+(typeattributeset gethnode_service_26_0 (gethnode_service))
 
 ;; types removed from current policy
 (type untrusted_v2_app)
