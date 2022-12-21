@@ -7,3 +7,5 @@
 ###
 
 type isolated_app, domain;
+#============= isolated_app ==============
+allow isolated_app content_capture_service:service_manager find;

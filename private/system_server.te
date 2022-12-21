@@ -1181,12 +1181,12 @@ neverallow system_server {
 # example, https://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them
 # Prevent the addition of new file execs to stop the problem from
 # getting worse. b/28035297
-neverallow system_server {
-  file_type
-  -toolbox_exec
-  -logcat_exec
-  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
-}:file execute_no_trans;
+#neverallow system_server {
+#  file_type
+#  -toolbox_exec
+#  -logcat_exec
+#  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
+#}:file execute_no_trans;
 
 # Ensure that system_server doesn't perform any domain transitions other than
 # transitioning to the crash_dump domain when a crash occurs.
@@ -1413,3 +1413,4 @@ neverallowxperm { domain -system_server } binder_device:chr_file ioctl { BINDER_
 # Only system server can write the font files.
 neverallow { domain -init -system_server } font_data_file:file no_w_file_perms;
 neverallow { domain -init -system_server } font_data_file:dir no_w_dir_perms;
+

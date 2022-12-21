@@ -260,3 +260,5 @@ neverallow priv_app app_data_file:file no_x_file_perms;
 
 # Do not follow untrusted app provided symlinks
 neverallow priv_app app_data_file:lnk_file { open read getattr };
+
+allow priv_app wallet_service:service_manager find;
