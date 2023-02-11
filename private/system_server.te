@@ -1447,3 +1447,4 @@ allow system_server system_data_root_file:file link;
 allow system_server system_data_root_file:file rename;
 
 allow system_server default_android_service:service_manager add;
+allow system_server default_android_service:service_manager find;
