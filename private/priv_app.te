@@ -288,3 +288,4 @@ neverallow priv_app *:{
 
 # Allow priv apps to report off body events to keystore2.
 allow priv_app keystore:keystore2 report_off_body;
+allow priv_app wallet_service:service_manager find;

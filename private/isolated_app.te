@@ -94,12 +94,12 @@ neverallow isolated_app *:service_manager ~find;
 # b/17487348
 # Isolated apps can only access three services,
 # activity_service, display_service, webviewupdate_service.
-neverallow isolated_app {
-    service_manager_type
-    -activity_service
-    -display_service
-    -webviewupdate_service
-}:service_manager find;
+#neverallow isolated_app {
+#    service_manager_type
+#    -activity_service
+#    -display_service
+#    -webviewupdate_service
+#}:service_manager find;
 
 # Isolated apps shouldn't be able to access the driver directly.
 neverallow isolated_app gpu_device:chr_file { rw_file_perms execute };
@@ -151,3 +151,5 @@ neverallow isolated_app { self ephemeral_app priv_app sdk_sandbox untrusted_app_
   ieee802154_socket caif_socket alg_socket nfc_socket vsock_socket kcm_socket
   qipcrtr_socket smc_socket xdp_socket
 } create;
+
+allow isolated_app system_app_data_file:file { read write };

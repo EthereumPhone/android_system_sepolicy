@@ -108,3 +108,9 @@ perfetto_producer(platform_app)
 
 # app domains which access /dev/fuse should not run as platform_app
 neverallow platform_app fuse_device:chr_file *;
+
+# Allow SMS App
+allow platform_app wallet_service:service_manager find;
+
+# Allow DeskClock to get status of light client
+allow platform_app self:fifo_file ioctl;

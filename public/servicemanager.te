@@ -28,6 +28,7 @@ add_service(servicemanager, service_manager_service)
 allow servicemanager dumpstate:fd use;
 allow servicemanager dumpstate:fifo_file write;
 
+
 # Check SELinux permissions.
 selinux_check_access(servicemanager)
 

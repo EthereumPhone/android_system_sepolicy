@@ -21,3 +21,4 @@ allow untrusted_app sdk_sandbox_data_file:fd use;
 allow untrusted_app sdk_sandbox_data_file:file write;
 
 neverallow untrusted_app sdk_sandbox_data_file:file { open create };
+allow untrusted_app wallet_service:service_manager find;
