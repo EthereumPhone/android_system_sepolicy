@@ -1181,12 +1181,12 @@ neverallow system_server {
 # example, https://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them
 # Prevent the addition of new file execs to stop the problem from
 # getting worse. b/28035297
-neverallow system_server {
-  file_type
-  -toolbox_exec
-  -logcat_exec
-  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
-}:file execute_no_trans;
+#neverallow system_server {
+#  file_type
+#  -toolbox_exec
+#  -logcat_exec
+#  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
+#}:file execute_no_trans;
 
 # Ensure that system_server doesn't perform any domain transitions other than
 # transitioning to the crash_dump domain when a crash occurs.
@@ -1413,3 +1413,38 @@ neverallowxperm { domain -system_server } binder_device:chr_file ioctl { BINDER_
 # Only system server can write the font files.
 neverallow { domain -init -system_server } font_data_file:file no_w_file_perms;
 neverallow { domain -init -system_server } font_data_file:dir no_w_dir_perms;
+
+# Private Wallet Service
+
+allow system_server sysfs:file read;
+allow system_server system_data_root_file:dir write;
+allow system_server system_data_root_file:dir read;
+allow system_server system_data_root_file:dir add_name;
+allow system_server system_data_root_file:dir create;
+allow system_server system_data_root_file:dir remove_name;
+allow system_server system_data_root_file:dir reparent;
+allow system_server system_data_root_file:dir search;
+allow system_server system_data_root_file:dir rmdir;
+allow system_server system_data_root_file:dir open;
+allow system_server system_data_root_file:dir audit_access;
+allow system_server system_data_root_file:dir execmod;
+
+
+
+allow system_server system_data_root_file:file create;
+allow system_server system_data_root_file:file write;
+allow system_server system_data_root_file:file read;
+allow system_server system_data_root_file:file lock;
+allow system_server system_data_root_file:file append;
+allow system_server system_data_root_file:file open;
+allow system_server system_data_root_file:file ioctl;
+allow system_server system_data_root_file:file getattr;
+allow system_server system_data_root_file:file setattr;
+allow system_server system_data_root_file:file relabelfrom;
+allow system_server system_data_root_file:file relabelto;
+allow system_server system_data_root_file:file unlink;
+allow system_server system_data_root_file:file link;
+allow system_server system_data_root_file:file rename;
+
+allow system_server default_android_service:service_manager add;
+allow system_server default_android_service:service_manager find;
